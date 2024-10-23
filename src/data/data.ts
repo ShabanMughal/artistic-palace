@@ -121,6 +121,14 @@ export const classic_products = [
     image:
       "https://i.pinimg.com/736x/b1/97/31/b19731830be8cd4d58dbbbf0f0c365f0.jpg",
   },
+  {
+    id: 12,
+    name: "Asma ul Husna Painting",
+    size: "18x24 inch",
+    price: 15000,
+    image:
+      "https://i.pinimg.com/736x/c1/a9/31/c1a931bd6b18863273a3321278ef1f2a.jpg",
+  },
 ];
 
 export const modren_products = [
