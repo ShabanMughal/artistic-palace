@@ -25,20 +25,22 @@ export default function Page() {
     { value: 400, label: "18 x 24" },
     { value: 500, label: "24 x 36" },
     { value: 600, label: "36 x 18" },
+    { value: 700, label: "36 x 48" }
   ];
 
   const frames = [
-    { value: 400, label: "Without frame" },
+    { value: 0, label: "Without frame" },
     { value: 500, label: "Normal frame" },
-    { value: 600, label: "High quality frame" },
-    { value: 700, label: "Branded frame" },
+    { value: 1000, label: "High quality frame" },
+    { value: 1500, label: "Branded frame" },
   ];
   const city = [
-    { value: 500, label: "Lahore" },
-    { value: 600, label: "Karachi" },
-    { value: 700, label: "Islamabad" },
-    { value: 200, label: "Peshawar" },
-    { value: 900, label: "Faisalabad" },
+    { value: 200, label: "Lahore" },
+    { value: 550, label: "Karachi" },
+    { value: 550, label: "Islamabad" },
+    { value: 550, label: "Peshawar" },
+    { value: 200, label: "Faisalabad" },
+    { value: 550, label: "Other City" },
   ];
 
   const theme = [
@@ -69,10 +71,10 @@ export default function Page() {
   React.useEffect(() => {
     switch (themeOption) {
       case "Canvas":
-        setThemePrice(400);
+        setThemePrice(500);
         break;
       case "Wooden":
-        setThemePrice(500);
+        setThemePrice(600);
         break;
       default:
         setFramePrice(0);
@@ -83,16 +85,16 @@ export default function Page() {
   React.useEffect(() => {
     switch (frameOption) {
       case "Without frame":
-        setFramePrice(400);
+        setFramePrice(0);
         break;
       case "Normal frame":
         setFramePrice(500);
         break;
       case "High quality frame":
-        setFramePrice(600);
+        setFramePrice(1000);
         break;
       case "3Branded frame":
-        setFramePrice(700);
+        setFramePrice(1500);
         break;
       default:
         setFramePrice(0);
@@ -114,6 +116,9 @@ export default function Page() {
       case "36 x 18":
         setSize(600);
         break;
+      case "36 x 48";
+        setSize(700);
+        break:
       default:
         setSize(0);
         break;
@@ -123,19 +128,22 @@ export default function Page() {
   React.useEffect(() => {
     switch (cityOption) {
       case "Lahore":
-        setShipped(500);
-        break;
-      case "Karachi":
-        setShipped(600);
-        break;
-      case "Islamabad":
-        setShipped(700);
-        break;
-      case "Peshawar":
         setShipped(200);
         break;
+      case "Karachi":
+        setShipped(550);
+        break;
+      case "Islamabad":
+        setShipped(550);
+        break;
+      case "Peshawar":
+        setShipped(550);
+        break;
       case "Faisalabad":
-        setShipped(900);
+        setShipped(200);
+        break;
+        case "Other City":
+        setShipped(550);
         break;
       default:
         setShipped(0);
@@ -223,7 +231,7 @@ export default function Page() {
     }, 3000);
   };
 
-  const subTotal = size + framePrice + themePrice + shipped + 200;
+  const subTotal = size + framePrice + themePrice + shipped;
 
   const discountedTotal = isTokenValid
     ? (subTotal + selectedProduct.price) * 0.8
@@ -367,7 +375,7 @@ export default function Page() {
             <div className="font-sans font-bold  mb-2 mt-10 text-md md:text-xl items-center flex justify-between">
               <span>Shipping Charges:</span>
               <span className="text-neutral-600 dark:text-neutral-400 text-sm md:text-xl ml-10">
-                Rs {shipped + 200}/-
+                Rs {shipped}/-
               </span>
             </div>
             <hr className="border-spacing-1 border-zinc-600 mt-5" />
