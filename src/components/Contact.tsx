@@ -45,7 +45,7 @@ export default function Contact() {
           </div>
         </div>
 
-        <div className="flex justify-between items-center mx-10 gap-10 lg:flex-row flex-col">
+        <div className="flex justify-between items-center mx-5 md:mx-10 gap-10 lg:flex-row flex-col">
           <div className="md:w-[40%] w-[100%]">
             <div className="flex items-center gap-3 text-2xl md:text-4xl font-bold">
               <p>Why You Can </p>

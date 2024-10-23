@@ -13,7 +13,7 @@ export function Navbar() {
     },
     {
       name: "Modern",
-      link: "/modern-products",
+      link: "/modren-products",
     },
     {
       name: "Others",
