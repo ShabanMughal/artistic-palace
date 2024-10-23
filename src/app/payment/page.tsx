@@ -116,9 +116,9 @@ export default function Page() {
       case "36 x 18 inch":
         setSize(600);
         break;
-      case "36 x 48 inch";
+      case "36 x 48 inch":
         setSize(700);
-        break:
+        break;
       default:
         setSize(0);
         break;
