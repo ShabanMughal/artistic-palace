@@ -411,7 +411,7 @@ export default function Page() {
                 </button>
               </ModalTrigger>
 
-              <ModalBody className="md:mx-[100px] mx-[50px] sm:mx-[5px] rounded-xl ">
+              <ModalBody className="md:mx-[100px] mx-[10px] sm:mx-[5px] rounded-xl ">
                 <ModalContent>
                   {!showPayment ? (
                     <div>
@@ -425,7 +425,7 @@ export default function Page() {
                         </p>
                         <p className="flex justify-between items-center my-1">
                           <strong>Email:</strong>{" "}
-                          <span className="opacity-50">{email}</span>
+                          <span className="opacity-50">{email.slice(0, 15)}...</span>
                         </p>
                         <p className="flex justify-between items-center my-1">
                           <strong>Phone No:</strong>{" "}
@@ -434,7 +434,7 @@ export default function Page() {
                         <p className="flex justify-between items-center my-1">
                           <strong>Product:</strong>{" "}
                           <span className="opacity-50">
-                            {selectedProduct.name}
+                            {selectedProduct.name.slice(0, 15)}...
                           </span>
                         </p>
                         <p className="flex justify-between items-center my-1">
