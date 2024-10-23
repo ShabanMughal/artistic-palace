@@ -200,7 +200,7 @@ export const modren_products = [
     id: 10,
     name: "Asma ul Husna Painting",
     size: "18x24 inch",
-    price: 9000,
+    price: 35000,
     image:
       "https://i.pinimg.com/474x/39/a2/b2/39a2b2b5aa768f5f134b207d1c5d285f.jpg",
   },
