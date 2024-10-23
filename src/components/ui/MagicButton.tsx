@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-const MagicButton = ({title, handleClick, otherClasses }:
+const MagicButton = ({title}:
      { title:string,
         handleClick:()=>void,
         otherClasses?:string

@@ -19,11 +19,11 @@ const Dropdown = ({ options, onChange, selectedValue, placeholder }: DropdownPro
   const [isOpen, setIsOpen] = React.useState(false);
   const [visible, setVisible] = React.useState(false);
   const radius = 100; 
-  let mouseX = useMotionValue(0);
-  let mouseY = useMotionValue(0);
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
 
   const handleMouseMove = ({ currentTarget, clientX, clientY }: React.MouseEvent) => {
-    let { left, top } = currentTarget.getBoundingClientRect();
+    const { left, top } = currentTarget.getBoundingClientRect();
     mouseX.set(clientX - left);
     mouseY.set(clientY - top);
   };

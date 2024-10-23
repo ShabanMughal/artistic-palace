@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import { BackgroundGradient } from "./ui/background-gradient";
 import { useRouter } from "next/navigation";

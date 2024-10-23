@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import Footer from "@/components/Footer";
@@ -197,7 +198,7 @@ export default function Page() {
   if (!selectedProduct) {
     return (
       <div className="h-screen w-screen flex justify-center text-center px-10 items-center text-2xl md:text-3xl">
-        Please go back to the home page, select a product again, and don't refresh the page.
+        Please go back to the home page, select a product again, and don&apos;t refresh the page.
       </div>
     );
   }
