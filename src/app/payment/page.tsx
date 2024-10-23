@@ -21,11 +21,11 @@ import React from "react";
 
 export default function Page() {
   const options = [
-    { value: 300, label: "18 x 18" },
-    { value: 400, label: "18 x 24" },
-    { value: 500, label: "24 x 36" },
-    { value: 600, label: "36 x 18" },
-    { value: 700, label: "36 x 48" }
+    { value: 300, label: "18 x 18 inch" },
+    { value: 400, label: "18 x 24 inch" },
+    { value: 500, label: "24 x 36 inch" },
+    { value: 600, label: "36 x 18 inch" },
+    { value: 700, label: "36 x 48 inch" }
   ];
 
   const frames = [
@@ -104,19 +104,19 @@ export default function Page() {
 
   React.useEffect(() => {
     switch (selectedOption) {
-      case "18 x 18":
+      case "18 x 18 inch":
         setSize(300);
         break;
-      case "18 x 24":
+      case "18 x 24 inch":
         setSize(400);
         break;
-      case "24 x 36":
+      case "24 x 36 inch":
         setSize(500);
         break;
-      case "36 x 18":
+      case "36 x 18 inch":
         setSize(600);
         break;
-      case "36 x 48";
+      case "36 x 48 inch";
         setSize(700);
         break:
       default:
