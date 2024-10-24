@@ -44,8 +44,8 @@ export default function Page() {
   ];
 
   const theme = [
-    { value: 500, label: "Canvas" },
-    { value: 600, label: "Wooden" },
+    { value: 200, label: "Canvas" },
+    { value: 300, label: "Wooden" },
   ];
   const [selectedOption, setSelectedOption] = React.useState("");
   const [frameOption, setFrameOption] = React.useState("");
@@ -71,10 +71,10 @@ export default function Page() {
   React.useEffect(() => {
     switch (themeOption) {
       case "Canvas":
-        setThemePrice(500);
+        setThemePrice(200);
         break;
       case "Wooden":
-        setThemePrice(600);
+        setThemePrice(300);
         break;
       default:
         setFramePrice(0);
