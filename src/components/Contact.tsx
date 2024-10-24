@@ -5,7 +5,9 @@ import { Input } from "./ui/input";
 import { cn } from "@/lib/utils";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "@/store/firebase";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Bounce } from "react-toastify";
 
 export default function Contact() {
   const [firstname, setFirstname] = useState("");
@@ -14,32 +16,79 @@ export default function Contact() {
   const [number, setNumber] = useState("");
   const [message, setMessage] = useState("");
 
- const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
-  if(firstname !== "" && lastname !== "" && email !== "" && number !== "" && message !== ""){
-    await addDoc(collection(db, "information"), {
-      firstname: firstname,
-      lastname: lastname,
-      email: email,
-      number: number,
-      message: message,
-    })
-    setFirstname('')
-    setLastname('')
-    setEmail('')
-    setNumber('')
-    setMessage('')
-  } else {
-    alert("Please fill all the fields")
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (
+      firstname !== "" &&
+      lastname !== "" &&
+      email !== "" &&
+      number !== "" &&
+      message !== ""
+    ) {
+      await addDoc(collection(db, "information"), {
+        firstname: firstname,
+        lastname: lastname,
+        email: email,
+        number: number,
+        message: message,
+      });
+      setFirstname("");
+      setLastname("");
+      setEmail("");
+      setNumber("");
+      setMessage("");
+      toast("Message send successfully! 👍", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
+      });
+    } else {
+      alert("Please fill all the fields");
+    }
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+      },
+      body: JSON.stringify({
+          access_key: "08579140-9486-492b-81eb-563b57e7abe5",
+          name: firstname + " " + lastname,
+          email: email,
+          number: number,
+          message: message,
+      }),
+  });
+  const result = await response.json();
+  if (result.success) {
+      console.log(result);
   }
-  
- }
+  };
 
   return (
     <>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        transition={Bounce}
+      />
+
       <div className="md:h-screen h-full pb-10 md:pb-0" id="contact">
         <div className="flex flex-col md:flex-row pt-20 pb-5 md:pt-24 md:pb-[6%] items-center justify-center text-2xl md:text-4xl font-bold">
-          <p className="mr-3">Contact Us and  </p>{" "}
+          <p className="mr-3">Contact Us and </p>{" "}
           <div className="relative bg-clip-text text-transparent bg-no-repeat bg-gradient-to-r from-purple-500 via-violet-500 to-pink-500 py-4">
             <span className=""> Let&apos;s Connect</span>
           </div>
@@ -84,8 +133,9 @@ export default function Contact() {
                   <Label htmlFor="firstname">First name</Label>
                   <Input
                     id="firstname"
+                    name="firstname"
                     value={firstname}
-                    onChange={(e)=> setFirstname(e.target.value)}
+                    onChange={(e) => setFirstname(e.target.value)}
                     placeholder="Tyler"
                     type="text"
                     required
@@ -95,8 +145,9 @@ export default function Contact() {
                   <Label htmlFor="lastname">Last name</Label>
                   <Input
                     id="lastname"
+                    name="lastname"
                     value={lastname}
-                    onChange={(e)=> setLastname(e.target.value)}
+                    onChange={(e) => setLastname(e.target.value)}
                     placeholder="Durden"
                     type="text"
                     required
@@ -107,18 +158,20 @@ export default function Contact() {
                 <Label htmlFor="email">Email Address</Label>
                 <Input
                   id="email"
+                  name="email"
                   placeholder="yourmail@gmail.com"
                   type="email"
                   value={email}
-                  onChange={(e)=> setEmail(e.target.value)}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </LabelInputContainer>
               <LabelInputContainer className="mb-4">
                 <Label htmlFor="number">Number</Label>
                 <Input
                   id="number"
+                  name="number"
                   value={number}
-                  onChange={(e)=> setNumber(e.target.value)}
+                  onChange={(e) => setNumber(e.target.value)}
                   placeholder="+92 XXXXXXXXXX"
                   type="number"
                   required
@@ -129,10 +182,11 @@ export default function Contact() {
                 <Input
                   required
                   id="message"
+                  name="message"
                   placeholder="I want to know more about your services"
                   type="message"
                   value={message}
-                  onChange={(e)=> setMessage(e.target.value)}
+                  onChange={(e) => setMessage(e.target.value)}
                 />
               </LabelInputContainer>
 
