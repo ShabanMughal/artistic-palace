@@ -18,6 +18,7 @@ import { Label } from "@radix-ui/react-label";
 import { addDoc, collection } from "firebase/firestore";
 import Link from "next/link";
 import React from "react";
+import { Bounce, toast, ToastContainer } from "react-toastify";
 
 export default function Page() {
   const options = [
@@ -44,8 +45,8 @@ export default function Page() {
   ];
 
   const theme = [
-    { value: 200, label: "Canvas" },
-    { value: 300, label: "Wooden" },
+    { value: 500, label: "Canvas" },
+    { value: 600, label: "Wooden" },
   ];
   const [selectedOption, setSelectedOption] = React.useState("");
   const [frameOption, setFrameOption] = React.useState("");
@@ -71,10 +72,10 @@ export default function Page() {
   React.useEffect(() => {
     switch (themeOption) {
       case "Canvas":
-        setThemePrice(200);
+        setThemePrice(500);
         break;
       case "Wooden":
-        setThemePrice(300);
+        setThemePrice(600);
         break;
       default:
         setFramePrice(0);
@@ -225,6 +226,17 @@ export default function Page() {
       if (token === validToken) {
         setIsTokenValid(true);
         setToken("");
+        toast("🥳 Discount applied successfully!", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+          transition: Bounce,
+        });
       } else {
         setIsTokenValid(false);
       }
@@ -254,6 +266,18 @@ export default function Page() {
 
   return (
     <>
+     <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        transition={Bounce}
+      />
     <div className="h-full pb-10 dark:bg-neutral-900 bg-neutral-100 text-black dark:text-white ">
       <div className="flex flex-col md:flex-row pt-20 pb-5 md:pt-24 md:pb-[1%] items-center justify-center text-3xl md:text-5xl font-bold">
         <p className="mr-3">Your Payment</p>{" "}
